@@ -16,7 +16,7 @@ public class Gethash {
 	}
 
 	public String hash() {
-	    // SHA3-512
+	    // SHA3-512のハッシュ値を返すメソッド
 	    MessageDigest sha3_512 = null;
 	    try {
 	      sha3_512 = MessageDigest.getInstance("SHA3-512");
@@ -32,6 +32,7 @@ public class Gethash {
 	    return this.strHashCode;
 	}
 	
+	@Override
 	public String toString() {
 		return this.strHashCode;
 	}
