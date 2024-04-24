@@ -13,13 +13,13 @@ public class H2dbGo {
 				+ "VALUES\n"
 				+ "('i@test.com','" + hashPassword + "', 1234.123456, 1234.123456, 'テスト９'); ";
 		
-		h2.H2Execute(strSql);
+		h2.sqlExecute(strSql);
 
 		try {
-			Object[][] r = h2.H2Result("SELECT * FROM MST_USER;");
+			Object[][] r = h2.sqlResult("SELECT * FROM MST_USER;");
 
 			System.out.println(r[0][4]);
-			h2.H2dbClose();
+			h2.dbClose();
 		} catch (SQLException e) {
 			// TODO 自動生成された catch ブロック
 			e.printStackTrace();

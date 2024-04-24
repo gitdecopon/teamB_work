@@ -6,24 +6,22 @@ import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-
-public class H2dbAc {
+public class Sqlite3Ac {
 	private Connection con;
-	public H2dbAc() {
+	public Sqlite3Ac() {
 		try {
-			Class.forName("org.h2.Driver");
+			Class.forName("org.sqlite.JDBC");
 		} catch (ClassNotFoundException e) {
 			throw new IllegalStateException (
 					"JDBCドライバを読み込めませんでした");
 		}
-			//H2への接続はサードパーティードライバが必用だったここから
-			String url = "jdbc:h2:tcp://localhost/~/H2database";
-			String user = "sa";
-			String pass = "rootroot";
-			
+			String db_name = "D:\\pleiades\\workspace_java\\teamB_work\\src\\main\\webapp\\WEB-INF\\sqlite3db.sqlite3";
+			String url = "jdbc:sqlite:" + db_name;
+			//String user = "sa";
+			//String pass = "rootroot";
 		try {
 			//データベースに接続
-			con = DriverManager.getConnection(url, user, pass);
+			con = DriverManager.getConnection(url);
 			
 		} catch (SQLException e) {
 			e.printStackTrace();	//接続やSQL処理失敗時の所;
